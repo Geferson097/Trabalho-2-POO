@@ -1,5 +1,5 @@
-# Trabalho-1-POO
-* Trabalho 1 da disciplina de Programação orientada a Objetos 2021 - 2
+# Trabalho-2-POO
+* Trabalho 2 da disciplina de Programação orientada a Objetos 2021 - 2
 * Simulador Corrida em Java
 
 * Profesora Luciene Marin.
