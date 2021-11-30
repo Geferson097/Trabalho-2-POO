@@ -18,13 +18,27 @@ public abstract class Veiculo{
     }
 
     public abstract void moverVeiculo();
-    public int getQtdRodas(){ return this.qtdRodas;}
-    public Roda getRodas(int i){ return rodas[i];}
+    public abstract void desenharVeiculo();
+
+
+//    public int getQtdRodas(){ return this.qtdRodas;}
+//    public Roda getRodas(int i){ return rodas[i];}
     public int getIdentificacao(){return this.identificacao;}
     public void setdistanciaPercorrida(int dist){this.distanciaPercorrida += dist;}
 
     public String imprimirDados(){
-        return "Veiculo Id: "+identificacao+" possui "+qtdRodas+" rodas e distancia percorrida: "+distanciaPercorrida;
+        return "Veiculo "+identificacao+" possui "+qtdRodas+" rodas e percorreu: "+distanciaPercorrida +" espaços";
+    }
+
+    public boolean verificaRodasCalibradas()
+    {
+        for(int i = 0; i<rodas.length; i++){
+            if(!rodas[i].getCalibragem()){
+                System.out.println("A roda "+i+" do veiculo "+getIdentificacao()+" não está calibrada");
+                return false;
+            }
+        }
+        return true;
     }
     private void calibrarOuEsvaziarRodas(boolean caliEsva, int roda, char tipo)
     {
@@ -82,30 +96,5 @@ public abstract class Veiculo{
         }
       }
     }
-
-
-
-
-//    public void imprimirDados(){
-//      if(tipo == 'B'){
-//        System.out.println("MODELO ===> BICICLETA");
-//      }
-//      else if (tipo == 'M'){
-//        System.out.println("MODELO ===> MOTOCICLETA");
-//      }
-//      else if (tipo == 'C'){
-//        System.out.println("MODELO ===> CARRO DE PASSEIO");
-//      }
-//      else if(tipo == 'E'){
-//        System.out.println("MODELO ===> CARRO ESPORTIVO");
-//      }
-//      System.out.println("Quantidade de rodas: "+this.qtdRodas);
-//      System.out.println("Informaçoes sobre as rodas: ");
-//      for(int i=0; i<this.qtdRodas; i++)
-//      {
-////        this.rodas[i].imprimirRoda();
-//      }
-//    }
-
 
 }

@@ -252,7 +252,7 @@ public class Comando_Central {
     static void movimentarVeiculo(int id) {
         for(int i=0 ;i<listaCorrida.length;i++)
         {
-            listaCorrida[i].moverVeiculo(); //implementar moverVeiculo()
+            listaCorrida[i].moverVeiculo();
         }
     }
 
@@ -304,7 +304,7 @@ public class Comando_Central {
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
                 if (listaCorrida[i] instanceof Bicicleta) {
-                    System.out.println(( (Bicicleta) listaCorrida[i] ).imprimirDados());  //implementar imprimirDados()
+                    System.out.println(( (Bicicleta) listaCorrida[i] ).imprimirDados());
                 } else if (listaCorrida[i] instanceof Motocicleta) {
                     System.out.println(( (Motocicleta) listaCorrida[i] ).imprimirDados());
                 } else if (listaCorrida[i] instanceof CarroPasseio) {
