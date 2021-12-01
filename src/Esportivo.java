@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Esportivo extends VeiculoMotorizado implements IPVA{
 
-    private static String[] esportivo = {"        __         \n","      ~( @\\ \\   \n","   _____]_[_/_>__   \n",
+    private String[] esportivo = {"        __         \n","      ~( @\\ \\   \n","   _____]_[_/_>__   \n",
             "  / __ \\<> |  __ \\      \n","=\\_/__\\_\\__|_/__\\_D     Ferrari\n","   (__)      (__)    \n"};
     private boolean IPVA;
     public Esportivo(int ident, int qtdeRodas, int distIni){

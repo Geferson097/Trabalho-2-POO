@@ -1,5 +1,5 @@
 public class Bicicleta extends Veiculo{
-    private static String[] bike = {"   __o\n"," _`\\<,_       Bike\n","(*)/ (*)\n\n"};
+    private String[] bike = {"   __o\n"," _`\\<,_       Bike\n","(*)/ (*)\n\n"};
     public Bicicleta(int ident,int qtdeROdas,int distIni){
       super(ident,qtdeROdas,distIni);
     }

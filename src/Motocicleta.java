@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Motocicleta extends VeiculoMotorizado implements IPVA{
-    String[] moto = {"   ,_oo\n",".-/c-//::          Motocicleta\n","(_)'==(_)\n\n"};
+    private String[] moto = {"   ,_oo\n",".-/c-//::          Motocicleta\n","(_)'==(_)\n\n"};
     private boolean IPVA;
 
     public Motocicleta(int ident,int qtdeRodas, int distanciaIni){

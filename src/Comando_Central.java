@@ -1,9 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-// OPÇÃO 1,2,3,4,5,6,7,8,9,10,11, ,13 TESTADAS E OK!
-
-// ALGUNS BUGS AINDA PRESENTES//
-//NA OPÇÃO DE IMPRIMIR A PISTA IMPRIME TODOS OS VEICULOS IGUAIS COM O MESMO ESPAÇO
+// OPÇÃO 1,2,3,4,5,6,7,8,9,10,11,12,13 TESTADAS E OK!
 public class Comando_Central {
     private static final int max = 20;
     private static final float combIni = 3.5F;
@@ -27,7 +24,7 @@ public class Comando_Central {
             System.out.println("5 - Movimentar veiculos por tipo");
             System.out.println("6 - Movimentar todos os veiculos");
             System.out.println("7 - Imprimir todos os dados de todos os veiculos");
-            System.out.println("8 - Imprimir dados de veiculos por tipo");//solicitar qualveículo e qual pneu
+            System.out.println("8 - Imprimir dados de veiculos por tipo");
             System.out.println("9 - Esvaziar/calibrar um pneu especıfico");
             System.out.println("10 - Calibrar todos os pneus de veıculos por tipo");
             System.out.println("11 - Esvaziar todos os pneus de veıculos por tipo");
