@@ -5,8 +5,8 @@ public abstract class VeiculoMotorizado extends Veiculo{
     private double combIni;
     private double valorIpva;
 
-    public VeiculoMotorizado(int ident, int qtdeRodas){
-      super(ident,qtdeRodas,0);
+    public VeiculoMotorizado(int ident, int qtdeRodas,int distIni){
+      super(ident,qtdeRodas,distIni);
       Random aleatorio = new Random();
       int sorteio;
       sorteio = aleatorio.nextInt(100);
@@ -19,17 +19,9 @@ public abstract class VeiculoMotorizado extends Veiculo{
         this.ipva = false;
       }
       this.combIni = 3.5;
-
     }
-
-
-
-    private void setCombustivel(float comb){this.combIni += comb;}
+    public void setCombustivel(float comb){this.combIni += comb;}
     public void setCombustivel(double comb){this.combIni -= comb;}
     public double getCombustivel(){ return combIni;}
     public boolean getIpva(){ return ipva;}
-
-
-    //abastecer veiculos
-    //movimentar veiculo motorizado
 }

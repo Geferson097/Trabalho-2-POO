@@ -16,20 +16,16 @@ public abstract class Veiculo{
             rodas[i]=new Roda();
         }
     }
-
     public abstract void moverVeiculo();
     public abstract void desenharVeiculo();
-
-
-//    public int getQtdRodas(){ return this.qtdRodas;}
-//    public Roda getRodas(int i){ return rodas[i];}
+    public abstract void imprimirDados();
+    public int getQtdRodas() { return qtdRodas;}
     public int getIdentificacao(){return this.identificacao;}
+    public int getDistanciaPercorrida() { return distanciaPercorrida;}
     public void setdistanciaPercorrida(int dist){this.distanciaPercorrida += dist;}
-
-    public String imprimirDados(){
-        return "Veiculo "+identificacao+" possui "+qtdRodas+" rodas e percorreu: "+distanciaPercorrida +" espaços";
-    }
-
+    public void calibrar(int numRoda,boolean caliEsva){ rodas[numRoda].setCalibragem(caliEsva); }
+    public void calibrar(int numRoda){ rodas[numRoda].setCalibragem(true); }
+    public void esvaziar(int numRoda){ rodas[numRoda].setCalibragem(false); }
     public boolean verificaRodasCalibradas()
     {
         for(int i = 0; i<rodas.length; i++){
@@ -40,61 +36,14 @@ public abstract class Veiculo{
         }
         return true;
     }
-    private void calibrarOuEsvaziarRodas(boolean caliEsva, int roda, char tipo)
-    {
-      if (caliEsva)
-      {
-        rodas[roda].setCalibragem(caliEsva);
-      }
-      else
-      {
-        rodas[roda].setCalibragem(caliEsva);
-      }
-    }
 
-    public void calibrarOuEsvaziarRodas(int caliEsva, int roda, char tipo)
-    {
-      if(caliEsva == 1){
-        calibrarOuEsvaziarRodas(true,roda,tipo);
-      }
-      else
-      {
-        calibrarOuEsvaziarRodas(false,roda,tipo);
-      }
-    }
 
-    public void calibrarOuEsvaziarRodas(boolean flag, char tipo)
-    {
-      if(flag)
-      {
-        if((tipo == 'B') || (tipo == 'M'))
-        {
-          for(int i=0; i<2; i++){
-            calibrarOuEsvaziarRodas(flag,i,tipo);
-          }
-        }
-        else
-        {
-          for(int i=0; i<4; i++){
-            calibrarOuEsvaziarRodas(flag,i,tipo);
-          }
-        }
-      }
-      else
-      {
-        if((tipo == 'B') || (tipo == 'M'))
-        {
-          for(int i=0; i<2; i++){
-            calibrarOuEsvaziarRodas(flag,i,tipo);
-          }
-        }
-        else
-        {
-          for(int i=0; i<4; i++){
-            calibrarOuEsvaziarRodas(flag,i,tipo);
-          }
-        }
-      }
-    }
+
+
+
+
+
+
+
 
 }

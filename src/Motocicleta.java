@@ -1,19 +1,30 @@
+import java.util.Random;
+
 public class Motocicleta extends VeiculoMotorizado implements IPVA{
+    String[] moto = {"   ,_oo\n",".-/c-//::          Motocicleta\n","(_)'==(_)\n\n"};
     private boolean IPVA;
 
-    public Motocicleta(int ident,int qtdeRodas){ super(ident,qtdeRodas);}
+    public Motocicleta(int ident,int qtdeRodas, int distanciaIni){
+        super(ident,qtdeRodas,distanciaIni);
+        Random x = new Random();
+        int i =  x.nextInt(100);
+        if(i % 2 == 0) {
+            this.IPVA = true;
+        }
+        else{
+            this.IPVA = false;
+        }
+    }
 
-
+    public double calcularValorIPVA() {return (valorBase * cte_Motocicleta);}
     public void moverVeiculo() {
         String espacoB = "      ";
-        String[] moto = {"   ,_oo\n",".-/c-//::          Motocicleta\n","(_)'==(_)\n\n"};
-
-
         if(getCombustivel()>.25){
             if(IPVA == true)
             {
                 if(verificaRodasCalibradas())
                 {
+                    System.out.println("O veiculo "+getIdentificacao()+" se movimentou");
                     for(int i = 0; i< moto.length; i++)
                     {
                         moto[i] = espacoB +moto[i];
@@ -28,13 +39,20 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
         else System.out.println("O veiculo "+getIdentificacao()+" não possui combustivel suficiente");
 
     }
-
     public void desenharVeiculo() {
-        String[] moto = {"   ,_oo\n",".-/c-//::          Motocicleta\n","(_)'==(_)\n\n"};
         for(int i=0;i<moto.length;i++)
         {
             System.out.print(moto[i]);
         }
     }
-    public double calcularValorIPVA() {return (valorBase * gastoMotocicleta);}
+
+    public void imprimirDados() {
+        if(getIpva()){
+            System.out.println("A motocicleta com id "+getIdentificacao()+" possui "+getQtdRodas()+" rodas, percorreu: "
+                    +getDistanciaPercorrida() +" espaços e seu IPVA está pago");
+        }
+        else System.out.println("A motocicleta com id "+getIdentificacao()+" possui "+getQtdRodas()+" rodas, percorreu: "
+                +getDistanciaPercorrida() +" espaços e seu IPVA não está pago");
+
+    }
 }
