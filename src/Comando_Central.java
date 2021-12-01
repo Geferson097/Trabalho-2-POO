@@ -45,7 +45,7 @@ public class Comando_Central {
                     char tipo;
                     tipo = sc.next().charAt(0);
                     if(tipo == 'B' || tipo == 'M' || tipo == 'C' || tipo =='E'){
-                        if(!verificaExisteIdent(ident)) {
+                        if(!verificaExisteIdent(ident)) { //verifica se o ID já esta no vetor, caso sim não insere o veiculo
                             adicionarVeiculo(ident,tipo);
                             aux++;
                         }
@@ -57,7 +57,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "2":
+                case "2": //Remover um veiculo pelo seu ID
                     System.out.println("Removendo um veiculo...");
                     System.out.println("-----------------------------");
                     System.out.println("Informe o numero do veiculo a ser removido: ");
@@ -70,7 +70,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "3":
+                case "3": //Abastecer um veiculo pelo seu ID
 
                     System.out.println("Abastecendo um veiculo...");
                     System.out.println("---------------------------------");
@@ -86,8 +86,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "4":
-
+                case "4": //movimentar um veiculo especifico pelo sei id
                     System.out.println("Movimentando um veiculo especifico...");
                     System.out.println("--------------------------------------");
                     System.out.println("Informe o id do veiculo que vai se movimentar: ");
@@ -99,7 +98,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "5":
+                case "5": //movimenta todos os veiculos de um tipo especificado
                     System.out.println("Movimentando veiculos por tipo...");
                     System.out.println("------------------------------------");
                     System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
@@ -108,21 +107,21 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "6":
+                case "6": //movimentar todos os veiculos
                     System.out.println("Movimentando todos os veiculos...");
                     System.out.println("-------------------------------------");
                     movimentarVeiculo();
                     System.out.print("\n\n");
                     break;
 
-                case "7":
+                case "7":  //imprimir os dados de todos os veiculos
                     System.out.println("Imprimindo todos os dados de todos os veiculos...");
                     System.out.println("--------------------------------------------------");
                     imprimirTodosDados();
                     System.out.print("\n\n");
                     break;
 
-                case "8":
+                case "8": //imprimir todos os dados de um veiculo pelo seu tipo
                     System.out.println("Imprimimindo dados de veiculos por tipo...");
                     System.out.println("---------------------------------------------");
                     System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
@@ -131,7 +130,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "9":
+                case "9":  //esvaziar ou calibrar um pneu pelo id do veiculo
                     System.out.println("Evaziando/calibrando um pneu especifico...");
                     System.out.println("----------------------------------------------");
                     System.out.println("Informe o id do veiculo: ");
@@ -149,7 +148,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "10":
+                case "10": //calibrar todos os pneus de todos os veiculos do mesmo tipo
                     System.out.println("Calibrando todos os pneus de veiculos por tipo...");
                     System.out.println("----------------------------------------------------");
                     System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
@@ -158,7 +157,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "11":
+                case "11":  //esvaziar todos os pneus de todos os veiculos do mesmo tipo
                     System.out.println("Esvaziando todos os pneus de veiculos por tipo...");
                     System.out.println("---------------------------------------------------");
                     System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
@@ -167,7 +166,7 @@ public class Comando_Central {
                     System.out.print("\n\n");
                     break;
 
-                case "12":
+                case "12": //imprimir a pista de corrida com todos os dados
                     System.out.println("Imprimindo pista de corrida...");
                     System.out.println("----------------------------------------------------");
                     imprimirPistaCorrida();
@@ -183,7 +182,7 @@ public class Comando_Central {
         }while(!opcao.equalsIgnoreCase("13"));
     }
 
-
+    //criar um objeto veiculo pelo seu tipo com um ID aleatorio
     private static void adicionarVeiculo(int ident, char tipo) {
         for (int i = 0; i < listaCorrida.length; i++)
         {
@@ -210,6 +209,7 @@ public class Comando_Central {
         }
     }
 
+    //remover um veiculo especifico pelo seu ID
     private static void removerVeiculo(int id) {
         boolean flag = false;
         for(int i = 0; i < listaCorrida.length; i++)
@@ -227,6 +227,7 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
+    //abastecer um veiculo especifico pelo seu ID
     private static void abastecerVeiculo(int id, float comb) {
         boolean flag = false;
         for(int i=0; i<listaCorrida.length; i++){
@@ -246,7 +247,8 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
-    static void movimentarVeiculo(int id) {  //mover um veiculo especifico pelo seu ID
+    //mover um veiculo especifico pelo seu ID
+    static void movimentarVeiculo(int id) {
         boolean flag = false;
         for(int i=0 ;i<listaCorrida.length;i++)
         {
@@ -269,56 +271,59 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
-    static void movimentarVeiculoPorTipo(char tipoV){  //movimentar um veiculo pelo seu tipo
+    //movimentar todos veiculos do mesmo tipo
+    static void movimentarVeiculoPorTipo(char tipoV){
         boolean flag = false;
 
         for(int i=0;i<listaCorrida.length;i++)
         {
             if (listaCorrida[i] != null) {
                 if (tipoV == 'B') {
-                    if(listaCorrida[i] instanceof  Bicicleta)
+                    if(listaCorrida[i] instanceof  Bicicleta) //se o objeto na listaCorrida for do tipo bicicleta
                     {
                         listaCorrida[i].moverVeiculo();
                     }
                 }
                 else  if(tipoV == 'M'){
-                    if(listaCorrida[i] instanceof  Motocicleta)
+                    if(listaCorrida[i] instanceof  Motocicleta)//se o objeto na listaCorrida for do tipo motocicleta
                     {
                         listaCorrida[i].moverVeiculo();
                     }
                 }
                 else if(tipoV =='C'){
-                    if(listaCorrida[i] instanceof  CarroPasseio)
+                    if(listaCorrida[i] instanceof  CarroPasseio)//se o objeto na listaCorrida for do tipo CarroPasseio
                     {
                         listaCorrida[i].moverVeiculo();
                     }
                 }
                 else if(tipoV =='E'){
-                    if(listaCorrida[i] instanceof  Esportivo)
+                    if(listaCorrida[i] instanceof  Esportivo)//se o objeto na listaCorrida for do tipo Esportivo
                     {
                         listaCorrida[i].moverVeiculo();
                     }
                 }
-                else System.out.println("Tipo do veiculo Inválido");
+                else System.out.println("Tipo do veiculo Inválido"); //caso seja digitado um valor diferente para o tipoV
                 flag = true;
             }
         }
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
+
+    //imprimir todos os dados de todos os veiculos
     private static void imprimirTodosDados() {
         boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
-                if (listaCorrida[i] instanceof Bicicleta) {
+                if (listaCorrida[i] instanceof Bicicleta) { //se o objeto na listaCorrida for do tipo Bicicleta
                     listaCorrida[i] .imprimirDados();
                 }
-                else if (listaCorrida[i] instanceof Motocicleta) {
+                else if (listaCorrida[i] instanceof Motocicleta) {//se o objeto na listaCorrida for do tipo Moocicleta
                     listaCorrida[i] .imprimirDados();
                 }
-                else if (listaCorrida[i] instanceof CarroPasseio) {
+                else if (listaCorrida[i] instanceof CarroPasseio) {//se o objeto na listaCorrida for do tipo CarroPasseio
                     listaCorrida[i] .imprimirDados();
                 }
-                else if (listaCorrida[i] instanceof Esportivo) {
+                else if (listaCorrida[i] instanceof Esportivo) { //se o objeto na listaCorrida for do tipo Esportivo
                     listaCorrida[i] .imprimirDados();
                 }
                 flag = true;
@@ -327,6 +332,7 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
+    //imprimir todos os dados de todos os veiculos do mesmo tipo
     private static void imprimirDadosPorTipo(char tipoV) {
         boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
@@ -363,18 +369,19 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
+    //Calibrar um Pneu especifico pelo ID do veiculo e o numero da roda
     private static void calibrarEspecifico(int id,int numRoda, int caliEsva) {
         boolean flag = false;
         for(int i = 0; i < listaCorrida.length;i++){
             if (listaCorrida[i] != null) {
                 if(listaCorrida[i].getIdentificacao()==id)
                 {
-                    if(caliEsva ==1) {
-                       if(numRoda<4){
-                          if(numRoda<2){
+                    if(caliEsva ==1) { //se caliEsva for 1 vou calibrar
+                       if(numRoda<4){  //Verificar pq um veiculo não tem mais que 4 rodas
+                          if(numRoda<2){  //Bicicleta e motocicleta não tem mais que duas rodas
                               if (listaCorrida[i] instanceof Bicicleta) {
                                   {
-                                      listaCorrida[i].calibrar(numRoda);
+                                      listaCorrida[i].calibrar(numRoda); //calibrar a roda Numroda da bicicleta
                                       System.out.println("A roda "+numRoda+" da Bicicleta foi calibrada");
                                   }
                               }
@@ -437,6 +444,8 @@ public class Comando_Central {
         }
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
+
+    //Calibrar ou esvaziar todas as rodas de determinado tipo de veiculo
     private  static void calibrarOuEsvaziarPorTipo(boolean caliEsva, char tipo){
         boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
@@ -480,6 +489,7 @@ public class Comando_Central {
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
+    //imprimir a pista de corrida com todos os veiculos presentes em listaCorrida
     public static void imprimirPistaCorrida(){
         boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
@@ -490,6 +500,8 @@ public class Comando_Central {
         }
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
+
+    //verificar se o ID passado está presente na listaCorrida
     private static boolean verificaExisteIdent(int ident) {
 
         for(int i = 0; i < listaCorrida.length;i++){
