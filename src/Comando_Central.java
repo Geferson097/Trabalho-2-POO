@@ -1,10 +1,9 @@
 import java.util.Scanner;
 import java.util.Random;
-// OPÇÃO 1,2,3,4,7,8,12,13 TESTADAS E OK!
+// OPÇÃO 1,2,3,4,5,6,7,8,9,10,11, ,13 TESTADAS E OK!
 
 // ALGUNS BUGS AINDA PRESENTES//
-// NA OPÇÃO MOVER TODOS VEICULOS ELE MOVE VEICULO COM RODA DESCALIBRADA, VERIFICAR
-//NA OPÇÂO DE CALIBRAR TODOS OS PNEUS ELE NÂO CALIBRA TODOS, VERIFICAR
+//NA OPÇÃO DE IMPRIMIR A PISTA IMPRIME TODOS OS VEICULOS IGUAIS COM O MESMO ESPAÇO
 public class Comando_Central {
     private static final int max = 20;
     private static final float combIni = 3.5F;
@@ -53,11 +52,11 @@ public class Comando_Central {
                             adicionarVeiculo(ident,tipo);
                             aux++;
                         }
-                        else System.out.println("Veiculo não adicionado,o id "+ident+" ja foi adicionado");
+                        else System.out.println("Veiculo não adicionado,o id "+ident+" ja foi sorteado");
                     }
                     else System.out.println("Tipo de veiculo incorreto!");
 
-                    if(aux>=20) System.out.println("Cheio, remova um veiculo caso queira adicionar mais");
+                    if(aux>=21) System.out.println("Cheio, remova um veiculo caso queira adicionar mais");
                     System.out.print("\n\n");
                     break;
 
@@ -87,6 +86,7 @@ public class Comando_Central {
                         abastecerVeiculo(id,comb);
                     }
                     else System.out.println("O veiculo "+id+" não esta na corrida");
+                    System.out.print("\n\n");
                     break;
 
                 case "4":
@@ -99,6 +99,7 @@ public class Comando_Central {
                         movimentarVeiculo(id);
                     }
                     else System.out.println("O veiculo "+id+" não esta na corrida");
+                    System.out.print("\n\n");
                     break;
 
                 case "5":
@@ -107,12 +108,14 @@ public class Comando_Central {
                     System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
                     tipo = sc.next().charAt(0);
                     movimentarVeiculoPorTipo(tipo);
+                    System.out.print("\n\n");
                     break;
 
                 case "6":
                     System.out.println("Movimentando todos os veiculos...");
                     System.out.println("-------------------------------------");
                     movimentarVeiculo();
+                    System.out.print("\n\n");
                     break;
 
                 case "7":
@@ -146,28 +149,32 @@ public class Comando_Central {
                         calibrarEspecifico(id,roda,caliEsva);
                     }
                     else System.out.println("O veiculo "+id+" não esta na corrida");
+                    System.out.print("\n\n");
                     break;
 
                 case "10":
                     System.out.println("Calibrando todos os pneus de veiculos por tipo...");
                     System.out.println("----------------------------------------------------");
-                    System.out.println("Informe o modelo dos veiculos que serao calibrada os pneus: ");
+                    System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
                     tipo = sc.next().charAt(0);
                     calibrarOuEsvaziarPorTipo(true,tipo);
+                    System.out.print("\n\n");
                     break;
 
                 case "11":
                     System.out.println("Esvaziando todos os pneus de veiculos por tipo...");
                     System.out.println("---------------------------------------------------");
-                    System.out.println("Informe o modelo dos veiculos que serao calibrada os pneus: ");
+                    System.out.println("Informe o tipo do veiculo: Bicicleta (B) | Motocicleta (M) | Carro Passeio (C) | Esportivo(E)");
                     tipo = sc.next().charAt(0);
                     calibrarOuEsvaziarPorTipo(false,tipo);
+                    System.out.print("\n\n");
                     break;
 
-                case "12":  //só falta implementar isoo
+                case "12":
                     System.out.println("Imprimindo pista de corrida...");
                     System.out.println("----------------------------------------------------");
                     imprimirPistaCorrida();
+                    System.out.print("\n\n");
                     break;
                 case "13":
                     System.out.println("Saindo da Operação...");
@@ -201,11 +208,13 @@ public class Comando_Central {
                     listaCorrida[i] = new Esportivo(ident,4,distanciaIni);
                     System.out.println("O Esportivo com id "+ident+" foi adicionado na posicao "+i);
                 }
+                break;
             }
         }
     }
 
     private static void removerVeiculo(int id) {
+        boolean flag = false;
         for(int i = 0; i < listaCorrida.length; i++)
         {
             if(listaCorrida[i] != null)
@@ -215,11 +224,14 @@ public class Comando_Central {
                     listaCorrida[i] = null;
                     System.out.println("O veiculo "+id+" foi removido.");
                 }
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     private static void abastecerVeiculo(int id, float comb) {
+        boolean flag = false;
         for(int i=0; i<listaCorrida.length; i++){
             if(listaCorrida[i]  != null )
             {
@@ -231,33 +243,38 @@ public class Comando_Central {
                     }
                     else System.out.println("Não dá pra abstecer uma Bicicleta!");
                 }
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     static void movimentarVeiculo(int id) {  //mover um veiculo especifico pelo seu ID
+        boolean flag = false;
         for(int i=0 ;i<listaCorrida.length;i++)
         {
             if(listaCorrida[i]!=null){
-                if(listaCorrida[i].getIdentificacao()==id)
-                {
-                    listaCorrida[i].moverVeiculo();
-                }
+                if(listaCorrida[i].getIdentificacao()==id) { listaCorrida[i].moverVeiculo(); }
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
     static void movimentarVeiculo() { //mover todos os veiculos
+        boolean flag = false;
         for(int i=0 ;i<listaCorrida.length;i++)
         {
             if (listaCorrida[i] != null) {
                 listaCorrida[i].moverVeiculo();
+                flag=true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     static void movimentarVeiculoPorTipo(char tipoV){  //movimentar um veiculo pelo seu tipo
-        boolean verificarPneus = true;
-        int distancia = 0;
+        boolean flag = false;
+
         for(int i=0;i<listaCorrida.length;i++)
         {
             if (listaCorrida[i] != null) {
@@ -286,12 +303,13 @@ public class Comando_Central {
                     }
                 }
                 else System.out.println("Tipo do veiculo Inválido");
+                flag = true;
             }
-
-
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
     private static void imprimirTodosDados() {
+        boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
                 if (listaCorrida[i] instanceof Bicicleta) {
@@ -306,11 +324,14 @@ public class Comando_Central {
                 else if (listaCorrida[i] instanceof Esportivo) {
                     listaCorrida[i] .imprimirDados();
                 }
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     private static void imprimirDadosPorTipo(char tipoV) {
+        boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
 
@@ -339,74 +360,143 @@ public class Comando_Central {
                     }
                 }
                 else System.out.println("Tipo do veiculo Inválido");
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     private static void calibrarEspecifico(int id,int numRoda, int caliEsva) {
+        boolean flag = false;
         for(int i = 0; i < listaCorrida.length;i++){
             if (listaCorrida[i] != null) {
                 if(listaCorrida[i].getIdentificacao()==id)
                 {
                     if(caliEsva ==1) {
-                        listaCorrida[i].calibrar(numRoda);
+                       if(numRoda<4){
+                          if(numRoda<2){
+                              if (listaCorrida[i] instanceof Bicicleta) {
+                                  {
+                                      listaCorrida[i].calibrar(numRoda);
+                                      System.out.println("A roda "+numRoda+" da Bicicleta foi calibrada");
+                                  }
+                              }
+                              if (listaCorrida[i] instanceof Motocicleta) {
+                                  {
+                                      listaCorrida[i].calibrar(numRoda);
+                                      System.out.println("A roda "+numRoda+" da Motocicleta foi calibrada");
+                                  }
+                              }
+                          }
+                           if (listaCorrida[i] instanceof CarroPasseio) {
+                               {
+                                   listaCorrida[i].calibrar(numRoda);
+                                   System.out.println("A roda "+numRoda+" do Carro de Passeio foi calibrada");
+                               }
+                           }
+                           if (listaCorrida[i] instanceof Esportivo) {
+                               {
+                                   listaCorrida[i].calibrar(numRoda);
+                                   System.out.println("A roda "+numRoda+" do Esportivo foi calibrada");
+                               }
+                           }
+                       }
+                       else System.out.println("Roda inválida");
                     }
-                    else listaCorrida[i].esvaziar(numRoda);
+                    else {
+                        if(numRoda<4){
+                            if(numRoda<2){
+                                if (listaCorrida[i] instanceof Bicicleta) {
+                                    {
+                                        listaCorrida[i].esvaziar(numRoda);
+                                        System.out.println("A roda "+numRoda+" da Bicicleta foi esvaziada");
+                                    }
+                                }
+                                if (listaCorrida[i] instanceof Motocicleta) {
+                                    {
+                                        listaCorrida[i].esvaziar(numRoda);
+                                        System.out.println("A roda "+numRoda+" da Motocicleta foi esvaziada");
+                                    }
+                                }
+                            }
+                            if (listaCorrida[i] instanceof CarroPasseio) {
+                                {
+                                    listaCorrida[i].esvaziar(numRoda);
+                                    System.out.println("A roda "+numRoda+" do Carro de Passeio foi esvaziada");
+                                }
+                            }
+                            if (listaCorrida[i] instanceof Esportivo) {
+                                {
+                                    listaCorrida[i].esvaziar(numRoda);
+                                    System.out.println("A roda "+numRoda+" do Esportivo foi esvaziada");
+                                }
+                            }
+                        }
+                        else System.out.println("Roda inválida");
+                    }
+                    flag = true;
                 }
-
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
     private  static void calibrarOuEsvaziarPorTipo(boolean caliEsva, char tipo){
+        boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
                 if (tipo == 'B') {
                     if (listaCorrida[i] instanceof Bicicleta) {
-                        for(int j=0;i<4;i++)
+                        for(int j=0;j<2;j++)
                         {
-                            listaCorrida[j].calibrar(j,caliEsva);
+                            listaCorrida[i].calibrar(j,caliEsva);
                         }
                     }
                 }
                 else if (tipo == 'M') {
                     if (listaCorrida[i] instanceof Motocicleta) {
-                        for(int j=0;i<4;i++)
+                        for(int j=0;j<2;j++)
                         {
-                            listaCorrida[j].calibrar(j,caliEsva);
+                            listaCorrida[i].calibrar(j,caliEsva);
                         }
                     }
                 }
                 else if(tipo == 'C') {
                     if (listaCorrida[i] instanceof CarroPasseio) {
-                        for(int j=0;i<4;i++)
+                        for(int j=0;j<4;j++)
                         {
-                            listaCorrida[j].calibrar(j,caliEsva);
+                            listaCorrida[i].calibrar(j,caliEsva);
                         }
                     }
                 }
                 else if(tipo =='E') {
                     if (listaCorrida[i] instanceof Esportivo) {
-                        for(int j=0;i<4;i++)
+                        for(int j=0;j<4;j++)
                         {
-                            listaCorrida[j].calibrar(j,caliEsva);
+                            listaCorrida[i].calibrar(j,caliEsva);
                         }
                     }
                 }
                 else System.out.println("Tipo do veiculo Inválido");
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
 
     public static void imprimirPistaCorrida(){
+        boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {
                 listaCorrida[i].desenharVeiculo();
+                flag = true;
             }
         }
+        if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
     private static boolean verificaExisteIdent(int ident) {
+
         for(int i = 0; i < listaCorrida.length;i++){
-            if((listaCorrida[i] != null) && (listaCorrida[i].getIdentificacao() == ident)) return true;
+            if((listaCorrida[i] != null) && (listaCorrida[i].getIdentificacao() == ident)) { return true;}
         }
         return false;
     }

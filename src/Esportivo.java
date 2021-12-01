@@ -22,7 +22,7 @@ public class Esportivo extends VeiculoMotorizado implements IPVA{
     public void moverVeiculo() {
         String espacoB = "      ";
         if(getCombustivel()>2.3){
-            if(IPVA == true)
+            if(this.IPVA == true)
             {
                 if(verificaRodasCalibradas())
                 {
@@ -48,7 +48,7 @@ public class Esportivo extends VeiculoMotorizado implements IPVA{
         }
     }
     public void imprimirDados() {
-        if(getIpva()){
+        if(this.IPVA){
             System.out.println("O veiculo Esportivo id "+getIdentificacao()+" possui "+getQtdRodas()+" rodas, percorreu: "
                     +getDistanciaPercorrida() +" espaços e seu IPVA está pago");
         }

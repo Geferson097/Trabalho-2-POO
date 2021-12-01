@@ -20,7 +20,7 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     public void moverVeiculo() {
         String espacoB = "      ";
         if(getCombustivel()>.25){
-            if(IPVA == true)
+            if(this.IPVA == true)
             {
                 if(verificaRodasCalibradas())
                 {
@@ -47,7 +47,7 @@ public class Motocicleta extends VeiculoMotorizado implements IPVA{
     }
 
     public void imprimirDados() {
-        if(getIpva()){
+        if(this.IPVA){
             System.out.println("A motocicleta com id "+getIdentificacao()+" possui "+getQtdRodas()+" rodas, percorreu: "
                     +getDistanciaPercorrida() +" espaços e seu IPVA está pago");
         }
