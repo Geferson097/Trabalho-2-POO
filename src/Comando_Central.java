@@ -189,19 +189,19 @@ public class Comando_Central {
             if (listaCorrida[i] == null)
             {
                 if(tipo == 'B'){
-                    listaCorrida[i] = new Bicicleta(ident,2,distanciaIni);
+                    listaCorrida[i] = new Bicicleta(ident,2,distanciaIni); //cria um objeto do tipo bicicleta na lista de corrida
                     System.out.println("A Bicicleta com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if (tipo == 'M'){
-                    listaCorrida[i] = new Motocicleta(ident,2,distanciaIni);
+                    listaCorrida[i] = new Motocicleta(ident,2,distanciaIni);//cria um objeto do tipo motocicleta na lista de corrida
                     System.out.println("A Motocicleta com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if (tipo == 'C'){
-                    listaCorrida[i] = new CarroPasseio(ident,4,distanciaIni);
+                    listaCorrida[i] = new CarroPasseio(ident,4,distanciaIni);//cria um objeto do tipo CarroPasseio na lista de corrida
                     System.out.println("O Carro de Passeio com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if(tipo == 'E'){
-                    listaCorrida[i] = new Esportivo(ident,4,distanciaIni);
+                    listaCorrida[i] = new Esportivo(ident,4,distanciaIni);//cria um objeto do tipo Esportivo na lista de corrida
                     System.out.println("O Esportivo com id "+ident+" foi adicionado na posicao "+i);
                 }
                 break;
@@ -212,13 +212,13 @@ public class Comando_Central {
     //remover um veiculo especifico pelo seu ID
     private static void removerVeiculo(int id) {
         boolean flag = false;
-        for(int i = 0; i < listaCorrida.length; i++)
+        for(int i = 0; i < listaCorrida.length; i++) //percorre até o tamanho maximo da lista de veiculos
         {
-            if(listaCorrida[i] != null)
+            if(listaCorrida[i] != null) //se tem algum objeto nessa posição do array de veiculos
             {
-                if(listaCorrida[i].getIdentificacao()==id)
+                if(listaCorrida[i].getIdentificacao()==id) //verifica se o veiculo na lista de corrida é o veiculo passado com ID
                 {
-                    listaCorrida[i] = null;
+                    listaCorrida[i] = null;     //remove o veiculo da corrida
                     System.out.println("O veiculo "+id+" foi removido.");
                 }
                 flag = true;
