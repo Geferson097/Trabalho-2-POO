@@ -3,8 +3,6 @@ import java.util.Random;
 // OPÇÃO 1,2,3,4,5,6,7,8,9,10,11,12,13 TESTADAS E OK!
 public class Comando_Central {
     private static final int max = 20;
-    private static final float combIni = 3.5F;
-    private static final int distanciaIni =0;
     static Veiculo[] listaCorrida = new Veiculo[max];
 
     public static void main(String[] args){
@@ -189,19 +187,19 @@ public class Comando_Central {
             if (listaCorrida[i] == null)
             {
                 if(tipo == 'B'){
-                    listaCorrida[i] = new Bicicleta(ident,2,distanciaIni); //cria um objeto do tipo bicicleta na lista de corrida
+                    listaCorrida[i] = new Bicicleta(ident,2,0); //cria um objeto do tipo bicicleta na lista de corrida
                     System.out.println("A Bicicleta com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if (tipo == 'M'){
-                    listaCorrida[i] = new Motocicleta(ident,2,distanciaIni);//cria um objeto do tipo motocicleta na lista de corrida
+                    listaCorrida[i] = new Motocicleta(ident,2,0);//cria um objeto do tipo motocicleta na lista de corrida
                     System.out.println("A Motocicleta com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if (tipo == 'C'){
-                    listaCorrida[i] = new CarroPasseio(ident,4,distanciaIni);//cria um objeto do tipo CarroPasseio na lista de corrida
+                    listaCorrida[i] = new CarroPasseio(ident,4,0);//cria um objeto do tipo CarroPasseio na lista de corrida
                     System.out.println("O Carro de Passeio com id "+ident+" foi adicionado na posicao "+i);
                 }
                 else if(tipo == 'E'){
-                    listaCorrida[i] = new Esportivo(ident,4,distanciaIni);//cria um objeto do tipo Esportivo na lista de corrida
+                    listaCorrida[i] = new Esportivo(ident,4,0);//cria um objeto do tipo Esportivo na lista de corrida
                     System.out.println("O Esportivo com id "+ident+" foi adicionado na posicao "+i);
                 }
                 break;
@@ -248,7 +246,7 @@ public class Comando_Central {
     }
 
     //mover um veiculo especifico pelo seu ID
-    static void movimentarVeiculo(int id) {
+    private static void movimentarVeiculo(int id) {
         boolean flag = false;
         for(int i=0 ;i<listaCorrida.length;i++)
         {
@@ -259,7 +257,7 @@ public class Comando_Central {
         }
         if(!flag){ System.out.println("Pista de corrida vazia"); }
     }
-    static void movimentarVeiculo() { //mover todos os veiculos
+    private static void movimentarVeiculo() { //mover todos os veiculos
         boolean flag = false;
         for(int i=0 ;i<listaCorrida.length;i++)
         {
@@ -272,7 +270,7 @@ public class Comando_Central {
     }
 
     //movimentar todos veiculos do mesmo tipo
-    static void movimentarVeiculoPorTipo(char tipoV){
+    private static void movimentarVeiculoPorTipo(char tipoV){
         boolean flag = false;
 
         for(int i=0;i<listaCorrida.length;i++)
@@ -490,7 +488,7 @@ public class Comando_Central {
     }
 
     //imprimir a pista de corrida com todos os veiculos presentes em listaCorrida
-    public static void imprimirPistaCorrida(){
+    private static void imprimirPistaCorrida(){
         boolean flag = false;
         for (int i = 0; i < listaCorrida.length; i++) {
             if (listaCorrida[i] != null) {

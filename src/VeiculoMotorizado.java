@@ -23,6 +23,7 @@ public abstract class VeiculoMotorizado extends Veiculo{ //herda da classe veicu
       this.combIni = 3.5;
     }
 
+    //metodo cpom sobrecarga **setCombustive**
     //incrementa o valor da variavel combIni com o valor recebido
     public void setCombustivel(float comb){this.combIni += comb;}
 
